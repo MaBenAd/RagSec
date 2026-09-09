@@ -1,0 +1,17 @@
+venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.gitignore
+.env
+backend/data/users.db
+backend/vectorstore_qdrant/
+backend/data/**
+frontend/node_modules/
+frontend/.next/
+frontend/.turbo/
+frontend/out/
+*.log

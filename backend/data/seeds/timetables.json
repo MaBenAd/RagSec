@@ -1,0 +1,651 @@
+{
+  "generated_at": "2026-04-15T17:19:53.018871+00:00",
+  "source": "users.db",
+  "include_inactive": false,
+  "timetables": [
+    {
+      "class_label": "G2ER_2025-2026_S4",
+      "academic_year": "2025-2026",
+      "semester": "S4",
+      "is_active": true,
+      "created_at": "2026-04-13 10:38:19.620698",
+      "updated_at": "2026-04-13 10:38:19.620698",
+      "slots": [
+        {
+          "day_of_week": 0,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "CHAÎNE DE CONVERSION ÉOLIENNE",
+          "professor": "Pr. ATIFI",
+          "room": "A06",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 0,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "CHAÎNE DE CONVERSION ÉOLIENNE",
+          "professor": "Pr. ATIFI",
+          "room": "A06",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 1,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "COMMANDES DES MACHINES ÉLECTRIQUES",
+          "professor": "Pr. ATIFI",
+          "room": "A06",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 1,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "COMMANDES DES MACHINES ÉLECTRIQUES",
+          "professor": "Pr. ATIFI",
+          "room": "A06",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 2,
+          "start_time": "09:00",
+          "end_time": "10:45",
+          "subject": "COMMUNICATING IN SCIENTIFIC CONTEXTS",
+          "professor": "Pr. CHAKIR",
+          "room": "A06",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 2,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "COMMUNICATING IN SCIENTIFIC CONTEXTS",
+          "professor": "Pr. CHAKIR",
+          "room": "A06",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "MÉCANIQUES DES FLUIDES",
+          "professor": "Pr. EZZARAA",
+          "room": "A06",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "MÉCANIQUES DES FLUIDES",
+          "professor": "Pr. EZZARAA",
+          "room": "A06",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "09:00",
+          "end_time": "10:45",
+          "subject": "SYSTÈMES SOLAIRES PV ET CSP",
+          "professor": "Pr. ACHKARI BEGDOURI",
+          "room": "A06",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "SYSTÈMES SOLAIRES PV ET CSP",
+          "professor": "Pr. ACHKARI BEGDOURI",
+          "room": "A06",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "INTELLIGENCE ARTIFICIELLE ET APPLICATIONS",
+          "professor": "Pr. OUNACHAD",
+          "room": "A06",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "INTELLIGENCE ARTIFICIELLE ET APPLICATIONS",
+          "professor": "Pr. OUNACHAD",
+          "room": "A06",
+          "type": "Cours"
+        }
+      ]
+    },
+    {
+      "class_label": "IACS_2025-2026_S2",
+      "academic_year": "2025-2026",
+      "semester": "S2",
+      "is_active": true,
+      "created_at": "2026-05-17T15:08:47+00:00",
+      "updated_at": "2026-05-17T15:08:47+00:00",
+      "slots": [
+        {
+          "day_of_week": 0,
+          "start_time": "09:00",
+          "end_time": "10:45",
+          "subject": "Cryptographie",
+          "professor": "Pr. OUNACHAD",
+          "room": "A05",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 0,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "Cryptographie",
+          "professor": "Pr. OUNACHAD",
+          "room": "A05",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 0,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "Cloud Computing & Virtualisation",
+          "professor": "Pr. OUNACHAD",
+          "room": "A05",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 0,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "Cloud Computing & Virtualisation",
+          "professor": "Pr. OUNACHAD",
+          "room": "A05",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 2,
+          "start_time": "09:00",
+          "end_time": "10:45",
+          "subject": "Big Data et Base de données NoSQL",
+          "professor": "Pr. GOUSKIR",
+          "room": "A05",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 2,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "Big Data et Base de données NoSQL",
+          "professor": "Pr. GOUSKIR",
+          "room": "A05",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 2,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "Big Data et Base de données NoSQL",
+          "professor": "Pr. GOUSKIR",
+          "room": "A05",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 2,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "Big Data et Base de données NoSQL",
+          "professor": "Pr. GOUSKIR",
+          "room": "A05",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "09:00",
+          "end_time": "10:45",
+          "subject": "Cryptographie",
+          "professor": "Pr. OUNACHAD",
+          "room": "A05",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "Cryptographie",
+          "professor": "Pr. OUNACHAD",
+          "room": "A05",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "Cloud Computing & Virtualisation",
+          "professor": "Pr. OUNACHAD",
+          "room": "A05",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "Cloud Computing & Virtualisation",
+          "professor": "Pr. OUNACHAD",
+          "room": "A05",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "09:00",
+          "end_time": "10:45",
+          "subject": "Anglais Technique",
+          "professor": "Pr. OUATAT",
+          "room": "A05",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "Anglais Technique",
+          "professor": "Pr. OUATAT",
+          "room": "A05",
+          "type": "Cours"
+        }
+      ]
+    },
+    {
+      "class_label": "IACS_2025-2026_S4",
+      "academic_year": "2025-2026",
+      "semester": "S4",
+      "is_active": true,
+      "created_at": "2026-04-13 10:25:45.298500",
+      "updated_at": "2026-04-13 10:25:45.298500",
+      "slots": [
+        {
+          "day_of_week": 0,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "Éthique et droit numérique",
+          "professor": "Pr. TOUIL",
+          "room": "A01",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 0,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "Éthique et droit numérique",
+          "professor": "Pr. TOUIL",
+          "room": "A01",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 1,
+          "start_time": "09:00",
+          "end_time": "10:45",
+          "subject": "Administration sécurisée et forensics",
+          "professor": "Pr. TOUIL",
+          "room": "A01",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 1,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "Administration sécurisée et forensics",
+          "professor": "Pr. TOUIL",
+          "room": "A01",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 1,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "Technologies émergentes et Quantum",
+          "professor": "Pr. TOUIL",
+          "room": "A01",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 1,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "Technologies émergentes et Quantum",
+          "professor": "Pr. TOUIL",
+          "room": "A01",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "Scientific and Professional Communication",
+          "professor": "Pr. CHAKIR",
+          "room": "A01",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "Scientific and Professional Communication",
+          "professor": "Pr. CHAKIR",
+          "room": "A01",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "09:00",
+          "end_time": "10:45",
+          "subject": "DEVOPS / DEVSECOPS",
+          "professor": "Pr. AOURAGHE",
+          "room": "A01",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "DEVOPS / DEVSECOPS",
+          "professor": "Pr. AOURAGHE",
+          "room": "A01",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "Droit et Rédaction Administratifs",
+          "professor": "Pr. LAGHRIBI",
+          "room": "A01",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "Droit et Rédaction Administratifs",
+          "professor": "Pr. LAGHRIBI",
+          "room": "A01",
+          "type": "Cours"
+        }
+      ]
+    },
+    {
+      "class_label": "TDI_2025-2026_S4",
+      "academic_year": "2025-2026",
+      "semester": "S4",
+      "is_active": true,
+      "created_at": "2026-04-13 10:45:59.788065",
+      "updated_at": "2026-04-13 10:45:59.788065",
+      "slots": [
+        {
+          "day_of_week": 0,
+          "start_time": "09:00",
+          "end_time": "10:45",
+          "subject": "Génie Logiciel",
+          "professor": "Pr. Elbaghazaoui",
+          "room": "A13",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 0,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "Génie Logiciel",
+          "professor": "Pr. Elbaghazaoui",
+          "room": "A13",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 1,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "Analytique des Données",
+          "professor": "Pr. Esswidi",
+          "room": "A13",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 1,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "Analytique des Données",
+          "professor": "Pr. Esswidi",
+          "room": "A13",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 2,
+          "start_time": "09:00",
+          "end_time": "10:45",
+          "subject": "Logistique et Transport",
+          "professor": "Pr. El Alaoui",
+          "room": "A13",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 2,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "Logistique et Transport",
+          "professor": "Pr. El Alaoui",
+          "room": "A13",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "09:00",
+          "end_time": "10:45",
+          "subject": "Communicating in Scientific Contexts",
+          "professor": "Pr. Ouatat",
+          "room": "A13",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "Communicating in Scientific Contexts",
+          "professor": "Pr. Ouatat",
+          "room": "A13",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "09:00",
+          "end_time": "10:45",
+          "subject": "Gestion de production, Lean Management et Contrôle Qualité",
+          "professor": "Pr. ACHKARI BEGDOURI",
+          "room": "A13",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "Gestion de production, Lean Management et Contrôle Qualité",
+          "professor": "Pr. El Alaoui",
+          "room": "A13",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "IA Appliquée à l’Industrie 4.0",
+          "professor": "Pr. Ouanan",
+          "room": "A13",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "IA Appliquée à l’Industrie 4.0",
+          "professor": "Pr. Ouanan",
+          "room": "A13",
+          "type": "Cours"
+        }
+      ]
+    },
+    {
+      "class_label": "IAA_2025-2026_S4",
+      "academic_year": "2025-2026",
+      "semester": "S4",
+      "is_active": true,
+      "created_at": "2026-05-15 22:30:00.000000",
+      "updated_at": "2026-05-15 22:30:00.000000",
+      "slots": [
+        {
+          "day_of_week": 0,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "Méthodologies innovantes d'analyses des aliments",
+          "professor": "Pr. KHIRAOUI",
+          "room": "A11",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 0,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "Méthodologies innovantes d'analyses des aliments",
+          "professor": "Pr. KHIRAOUI",
+          "room": "A11",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 1,
+          "start_time": "08:30",
+          "end_time": "10:45",
+          "subject": "Technologie de transformation alimentaire et conservation II",
+          "professor": "",
+          "room": "EST-BM",
+          "type": "TP3"
+        },
+        {
+          "day_of_week": 1,
+          "start_time": "11:00",
+          "end_time": "12:30",
+          "subject": "Technologie de transformation alimentaire et conservation II",
+          "professor": "",
+          "room": "EST-BM",
+          "type": "TP3"
+        },
+        {
+          "day_of_week": 1,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "Communicating in scientific contexts",
+          "professor": "Pr. CHAKIR",
+          "room": "A11",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 1,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "Communicating in scientific contexts",
+          "professor": "Pr. CHAKIR",
+          "room": "A11",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 2,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "Visite pédagogique",
+          "professor": "",
+          "room": "",
+          "type": "Visite"
+        },
+        {
+          "day_of_week": 2,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "Technologies de transformation alimentaire et conservation I",
+          "professor": "Pr. HALLOUTI",
+          "room": "A11",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 2,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "Technologies de transformation alimentaire et conservation I",
+          "professor": "Pr. HALLOUTI",
+          "room": "A11",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "08:30",
+          "end_time": "10:45",
+          "subject": "Génie des procédés alimentaire",
+          "professor": "",
+          "room": "EST-BM",
+          "type": "TP"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "11:00",
+          "end_time": "12:30",
+          "subject": "Génie des procédés alimentaire",
+          "professor": "",
+          "room": "EST-BM",
+          "type": "TP"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "14:30",
+          "end_time": "16:15",
+          "subject": "Génie des procédés alimentaire",
+          "professor": "Pr. OUROUADI",
+          "room": "A11",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "16:30",
+          "end_time": "18:15",
+          "subject": "Génie des procédés alimentaire",
+          "professor": "Pr. OUROUADI",
+          "room": "A11",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "09:00",
+          "end_time": "10:45",
+          "subject": "Technologies de transformation alimentaire et conservation I",
+          "professor": "Pr. HALLOUTI",
+          "room": "A11",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "11:00",
+          "end_time": "12:45",
+          "subject": "Technologies de transformation alimentaire et conservation I",
+          "professor": "Pr. HALLOUTI",
+          "room": "A11",
+          "type": "Cours"
+        },
+        {
+          "day_of_week": 5,
+          "start_time": "09:00",
+          "end_time": "12:45",
+          "subject": "Soutenances des stages d'initiation",
+          "professor": "",
+          "room": "A11",
+          "type": "Soutenance"
+        }
+      ]
+    }
+  ]
+}

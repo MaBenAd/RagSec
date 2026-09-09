@@ -1,0 +1,51 @@
+{
+  "name": "chatbot-usms-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "overrides": {
+    "follow-redirects": "^1.16.0",
+    "next": {
+      "postcss": "^8.5.10"
+    }
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "axios": "^1.15.0",
+    "html-to-image": "^1.11.13",
+    "i18next": "^26.0.3",
+    "i18next-browser-languagedetector": "^8.2.1",
+    "lucide-react": "0.469.0",
+    "next": "15.5.15",
+    "next-themes": "^0.4.4",
+    "pdfjs-dist": "^4.10.38",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-dropzone": "^14.3.8",
+    "react-hook-form": "^7.56.4",
+    "react-i18next": "^17.0.2",
+    "react-markdown": "^9.1.0",
+    "sonner": "^1.7.4",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.2",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.30",
+    "@types/react": "^18.3.20",
+    "@types/react-dom": "^18.3.6",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "15.5.15",
+    "postcss": "^8.5.10",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.2"
+  }
+}
