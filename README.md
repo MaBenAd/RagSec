@@ -92,7 +92,7 @@ Evaluate the same cases with protection disabled and enabled. Report attack succ
 
 ## Documentation and development
 
-Start with [architecture](ARCHITECTURE.md), [threat model](THREAT_MODEL.md), [roadmap](docs/roadmap.md), [testing](docs/testing.md), and the [documentation index](docs/README.md).
+Start with [architecture](ARCHITECTURE.md), [threat model](THREAT_MODEL.md), [roadmap](docs/roadmap.md), [project implementation checklist](docs/project-todo.md), [testing](docs/testing.md), and the [documentation index](docs/README.md).
 
 ```bash
 python -m pytest backend/tests/ -q
