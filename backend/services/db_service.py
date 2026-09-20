@@ -27,7 +27,7 @@ _SERVICES_DIR = os.path.dirname(_THIS_FILE)  # backend/services/
 _BACKEND_DIR = os.path.dirname(_SERVICES_DIR)  # backend/
 DEFAULT_DB_PATH = os.path.join(_BACKEND_DIR, "data", "users.db")
 ALEMBIC_INI_PATH = os.path.join(_BACKEND_DIR, "alembic.ini")
-ALEMBIC_HEAD_REVISION = "20260426_0002"
+ALEMBIC_HEAD_REVISION = "20260920_0002"
 
 
 def _utc_now() -> datetime:

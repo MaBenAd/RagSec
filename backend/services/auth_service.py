@@ -50,7 +50,7 @@ REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS", "7"))
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login", auto_error=False)
 
 
-def create_access_token(user_id: int, email: str, role: str) -> str:
+def create_access_token(user_id: int, email: str, role: str, session_version: int = 1) -> str:
     """Genere un JWT d'acces court."""
     now = datetime.now(timezone.utc)
     expire = now + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -58,6 +58,7 @@ def create_access_token(user_id: int, email: str, role: str) -> str:
         "sub": str(user_id),
         "email": email,
         "role": role,
+        "session_version": session_version,
         "type": "access",
         "iat": now,
         "nbf": now,
@@ -128,7 +129,8 @@ def get_current_user(request: Request, token: str | None = Depends(oauth2_scheme
         role = payload.get("role")
         if payload.get("type") != "access" or not user_id or not email:
             raise credentials_exc
-        return {"id": int(user_id), "email": email, "role": role}
+        return {"id": int(user_id), "email": email, "role": role,
+                "session_version": payload.get("session_version")}
     except jwt.ExpiredSignatureError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

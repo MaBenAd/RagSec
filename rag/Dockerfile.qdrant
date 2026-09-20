@@ -1,0 +1,4 @@
+FROM qdrant/qdrant:v1.15.4@sha256:6ac4807063bbecddca0250bfbcff52acf18c22263b904d12919349e6d0a408f1
+USER root
+RUN mkdir -p /qdrant/storage /qdrant/snapshots && chown -R 10001:10001 /qdrant/storage /qdrant/snapshots
+USER 10001:10001
