@@ -2,9 +2,10 @@
 
 ## Available today
 
-The inherited test suite remains in `backend/tests/`. Install the pinned security requirements in an isolated Python 3.12 environment, then run from the repository root:
+The inherited test suite remains in `backend/tests/`. Install the pinned test requirements (which include the protected security requirements) in an isolated Python 3.12 environment, then run from the repository root:
 
 ```bash
+python -m pip install -r requirements-test.txt
 python -m pytest backend/tests/ -q
 ```
 
