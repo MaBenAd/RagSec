@@ -1,0 +1,137 @@
+name: ragsec-protected
+
+x-app: &app
+  build:
+    context: .
+    dockerfile: gateway/Dockerfile
+  image: ragsec-protected:local
+  user: "10001:10001"
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  pids_limit: 128
+  mem_limit: 1g
+  cpus: 2
+  tmpfs:
+    - /tmp:size=64m,uid=10001,gid=10001
+    - /app/backend/data:size=16m,uid=10001,gid=10001
+  networks: [data]
+
+x-db: &db
+  DATABASE_URL: postgresql://ragsec:${RAGSEC_DB_PASSWORD:?Run gateway.lab configure}@postgres:5432/ragsec
+  JWT_SECRET_KEY: ${RAGSEC_JWT_KEY:?Run gateway.lab configure}
+
+services:
+  postgres:
+    image: postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+    user: "70:70"
+    environment:
+      POSTGRES_USER: ragsec
+      POSTGRES_DB: ragsec
+      POSTGRES_PASSWORD: ${RAGSEC_DB_PASSWORD:?Run gateway.lab configure}
+    volumes: [database:/var/lib/postgresql/data]
+    networks: [data]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U ragsec -d ragsec"]
+      interval: 3s
+      retries: 20
+    security_opt: [no-new-privileges:true]
+
+  qdrant:
+    build:
+      context: .
+      dockerfile: rag/Dockerfile.qdrant
+    image: ragsec-qdrant:local
+    user: "10001:10001"
+    environment:
+      QDRANT__SERVICE__API_KEY: ${RAGSEC_VECTOR_WRITE_KEY:?Run gateway.lab configure}
+      QDRANT__SERVICE__READ_ONLY_API_KEY: ${RAGSEC_VECTOR_READ_KEY:?Run gateway.lab configure}
+      QDRANT__TELEMETRY_DISABLED: "true"
+    volumes: [vectors:/qdrant/storage]
+    networks: [data]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+
+  opa:
+    image: openpolicyagent/opa:1.4.2-static@sha256:3c995dc8a59f6ddfd92eb7404d2f7ff9fe71cd025d9251199957a8a6afbfd76e
+    user: "10001:10001"
+    command: [run, --server, --addr=0.0.0.0:8181, --authentication=token, --authorization=basic, --disable-telemetry, /policies]
+    environment:
+      RAGSEC_OPA_TOKEN: ${RAGSEC_OPA_TOKEN:?Run gateway.lab configure}
+    volumes: [./policies:/policies:ro]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    networks: [data]
+
+  parser:
+    build:
+      context: .
+      dockerfile: rag/Dockerfile.parser
+    network_mode: none
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 32
+    mem_limit: 384m
+    cpus: 1
+    tmpfs: ["/tmp:size=8m,uid=10001,gid=10001"]
+    volumes: [parser-ipc:/ipc]
+
+  migrate:
+    <<: *app
+    environment:
+      <<: *db
+    command: [python, -m, gateway.manage, migrate]
+    depends_on:
+      postgres: {condition: service_healthy}
+
+  ingestion:
+    <<: *app
+    volumes: [staging:/staging]
+    environment:
+      <<: *db
+      QDRANT_URL: http://qdrant:6333
+      QDRANT_WRITE_KEY: ${RAGSEC_VECTOR_WRITE_KEY}
+      RAGSEC_OPA_URL: http://opa:8181
+      RAGSEC_OPA_TOKEN: ${RAGSEC_OPA_TOKEN}
+      RAGSEC_INGEST_TOKEN: ${RAGSEC_INGEST_TOKEN}
+      RAGSEC_DEMO_PASSWORD: ${RAGSEC_DEMO_PASSWORD}
+    command: [uvicorn, rag.worker:application, --factory, --host, 0.0.0.0, --port, "8001", --no-access-log]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+
+  gateway:
+    <<: *app
+    networks: [data, edge]
+    environment:
+      <<: *db
+      QDRANT_URL: http://qdrant:6333
+      QDRANT_READ_KEY: ${RAGSEC_VECTOR_READ_KEY}
+      RAGSEC_SIGNING_KEY: ${RAGSEC_SIGNING_KEY}
+      RAGSEC_OPA_URL: http://opa:8181
+      RAGSEC_OPA_TOKEN: ${RAGSEC_OPA_TOKEN}
+      RAGSEC_INGEST_TOKEN: ${RAGSEC_INGEST_TOKEN}
+      RAGSEC_PROVIDER: offline
+    ports: [127.0.0.1:8001:8000]
+    volumes: [parser-ipc:/ipc]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      ingestion: {condition: service_started}
+      parser: {condition: service_started}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readyz', timeout=4)"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  edge:
+  data:
+    internal: true
+volumes:
+  database:
+  vectors:
+  parser-ipc:
+  staging:

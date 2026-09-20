@@ -24,6 +24,8 @@ frontend/tsconfig.tsbuildinfo
 ven/
 node_modules/
 frontend/.next/
+frontend/test-results/
+frontend/playwright-report/
 benchmark/results/
 benchmark/traces/
 *.ses
