@@ -1,10 +1,10 @@
 # RagSec architecture
 
-Status: proposed firewall around the inherited Chatbot-USMS application. See [README](README.md) for the target flow and [threat model](THREAT_MODEL.md) for actual boundaries and assumptions.
+Status: implemented protected lab gateway around the inherited Chatbot-USMS application. See [README](README.md), [implementation report](docs/implementation-report.md), and [threat model](THREAT_MODEL.md) for boundaries and limitations.
 
 ## Baseline and integration seams
 
-The current FastAPI routes call `backend/services/router_service.py`, structured timetable queries or `rag_service.py`, then `chatbot_service.py` / `groq_service.py`. The frontend consumes REST and SSE. PostgreSQL (SQLite in local fallback) stores users and conversations; Qdrant stores vectors; Redis provides caching. These paths are retained as the benchmark's comparison application.
+The inherited FastAPI routes call `backend/services/router_service.py`, structured timetable queries or `rag_service.py`, then `chatbot_service.py` / `groq_service.py`. The protected gateway in `gateway/` is a separate FastAPI application and the protected browser surface is `/secure`. PostgreSQL stores authoritative protected records; Qdrant stores versioned vectors; Redis is optional for protected caching. The inherited paths remain the benchmark comparison application.
 
 Integrate security at both REST and streaming entry points through one shared decision pipeline. The inherited router classifies academic intent; it is not an authorization engine. Authentication establishes a server-owned actor context before any retrieval, cache lookup or model call. Never accept tenant or role claims from prompts.
 
@@ -42,6 +42,6 @@ Cache keys must include actor/access scope, corpus version, policy version and r
 
 ## Deployment choices
 
-Keep Qdrant initially because the baseline already integrates it. Evaluate pgvector as an alternative only through measured retrieval and isolation tests. PostgreSQL holds provenance and audit records; Redis remains ephemeral. LangGraph and OPA are planned additions and are not dependencies or Compose services yet. Optional classifiers must have bounded timeouts and cannot override a deterministic denial.
+Keep Qdrant initially because the baseline already integrates it. Evaluate pgvector as an alternative only through measured retrieval and isolation tests. PostgreSQL holds provenance and audit records; Redis remains ephemeral. LangGraph and OPA are wired into the protected Compose profile. Optional classifiers must have bounded timeouts and cannot override a deterministic denial.
 
 Separate unprotected benchmark mode into an isolated test deployment. The normal gateway must not expose a client-selectable bypass flag. Use synthetic fixtures and local mock tools with no production credentials or external side effects.

@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-RagSec is a planned AI/RAG security firewall built on Chatbot-USMS. This model separates inspected baseline behavior from the target architecture supplied by the project owner. It is an initial architecture model, not a vulnerability audit or proof of protection. Scope: the imported application, local/Docker workflows and proposed security boundaries. An independent read-only architecture pass informed this document.
+RagSec is an AI/RAG security firewall built on Chatbot-USMS. The inherited application remains the comparison baseline; the protected lab implementation is now wired under `gateway/`, `rag/`, `scanners/` and `policies/`. This model separates those two paths and is not a production certification or proof of protection. See the current evidence in [`docs/implementation-report.md`](docs/implementation-report.md) and the OWASP assessment in [`docs/owasp-assessment.md`](docs/owasp-assessment.md).
 
 | Component | Inspected source | Current behavior |
 |---|---|---|
@@ -55,7 +55,7 @@ Registration domain validation is not proof of mailbox ownership (`backend/route
 
 Server-authenticated identity must accompany each policy decision. Retrieved chunks inherit enforceable permissions; scan confidence never grants access. Model-proposed tools require host enforcement before execution. Memory reads/writes require ownership checks. Mandatory control failure denies the protected operation. Cache hits and SSE must pass equivalent enforcement. Context, parsing, tool steps and provider spend need bounded budgets.
 
-Deployment TLS, live service exposure, actual provider retention, future policy schema and future tool permissions remain unresolved. New scanners, LangGraph, output validation and OPA are not integrated. Rego defaults are deny-all placeholders. Baseline operation is for an isolated development lab; no production assurance is claimed.
+Deployment TLS, live service exposure, actual provider retention, future policy schema and future tool permissions remain unresolved. The protected lab now integrates bounded scanners, a shared REST/SSE pipeline, output validation, OPA decisions, staged ingestion and scoped retrieval; the inherited baseline remains outside those guarantees. Baseline operation is for an isolated development lab; no production assurance is claimed.
 
 ## 3. Attack Surface, Mitigations, and Attacker Stories
 

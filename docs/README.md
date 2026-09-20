@@ -1,5 +1,7 @@
 # RagSec documentation
 
+The implemented protected lab is documented in [implementation report](implementation-report.md) and [OWASP assessment](owasp-assessment.md). The inherited reports under `base-project/` are retained for provenance and are not current RagSec security claims.
+
 RagSec upgrades [Chatbot-USMS](https://github.com/ALLAKORI/Chatbot-USMS.git) into an AI/RAG security firewall research project.
 
 - [Project README](../README.md): purpose, current status, stack and baseline startup.
@@ -12,5 +14,6 @@ RagSec upgrades [Chatbot-USMS](https://github.com/ALLAKORI/Chatbot-USMS.git) int
 - [OWASP mapping](owasp-rag-security.md): primary security reference and backlog mapping.
 - [Provenance](provenance.md): source revision and attribution.
 - [Historical documentation](base-project/README.md): inherited implementation details, not RagSec guarantees.
+- [Commit policy](commit-policy.md): Conventional Commit types, scopes and review rules for maintainable history.
 
-The inherited UI and university dataset remain demonstration fixtures. Security components are scaffolding until explicitly implemented and verified. Historical claims of production readiness, compliance and test counts have not been adopted for RagSec.
+The inherited UI and university dataset remain demonstration fixtures. The protected lab is implemented and verified within the evidence and limitations in the implementation report; historical production, compliance and test-count claims have not been adopted for RagSec.

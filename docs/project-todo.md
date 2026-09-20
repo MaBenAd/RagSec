@@ -1,12 +1,27 @@
 # RagSec project implementation checklist
 
-Updated 2026-09-09. **Every task below is pending.** This is the execution backlog for the [roadmap](roadmap.md), from baseline setup to release and maintenance. Existing files named below are integration seams; proposed files and modules are not implemented yet.
+Updated 2026-09-20. The original execution checklist is retained as an audit trail. **P0–P8 are implemented in the protected lab; P9 remains partial.** Evidence, test results and the remaining release gates are recorded in [`docs/implementation-report.md`](implementation-report.md). The inherited application and the historical documents under `docs/base-project/` remain the comparison baseline.
 
 ## How to use this plan
 
 Work in phase order, respecting the roadmap dependencies. For each checkbox, make a focused change, run its acceptance checks, and attach evidence before marking it complete. Use this completion record beside the task: `owner | commit/PR | test command and result | evidence path | limitations`. Do not commit credentials, private datasets, local databases or raw sensitive traces. Preserve upstream notices and historical documents.
 
 The plan assumes an owned local lab, FR/EN/AR examples, synthetic users/documents and mock tools. It does not authorize deployment to external infrastructure. Security rationale is mapped to the [OWASP reference](owasp-rag-security.md); implementation details here are project design choices.
+
+## Current completion map
+
+| Phase | Status | Evidence |
+|---|---|---|
+| P0 baseline and contracts | Complete | `README.md`, `ARCHITECTURE.md`, `benchmark/`, baseline test record |
+| P1 authorization | Complete | `gateway/contracts.py`, `gateway/policy.py`, `policies/`, protected migrations |
+| P2 shared request/response path | Complete | `gateway/pipeline.py`, `scanners/`, REST/SSE parity tests |
+| P3 ingestion and index lifecycle | Complete | `rag/ingestion.py`, parser worker/container, lifecycle tests |
+| P4 scoped retrieval | Complete | `rag/retrieval.py`, Qdrant filters/manifests, provenance tests |
+| P5 citations/cache/deletion/user flows | Complete | `gateway/citations.py`, `gateway/cache.py`, session and revocation tests |
+| P6 tools and memory | Complete for mock lab capabilities | `gateway/tools.py`, `gateway/memory.py`, OPA policy tests |
+| P7 deployment and operations | Complete for local protected Compose | `compose.protected.yml`, recovery/audit checks; production operations remain open |
+| P8 evaluation and handoff | Complete for offline/browser artifacts | `benchmark/`, reports, frontend E2E; browser run remains environment-dependent |
+| P9 optional research/maintenance | Partial | Not claimed as implemented protection; see implementation report |
 
 ## P0 — Establish the baseline and project contract
 

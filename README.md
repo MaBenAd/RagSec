@@ -1,10 +1,10 @@
 # RagSec — AI/RAG Security Firewall
 
-RagSec is an upgrade and enhancement of [Chatbot-USMS](https://github.com/ALLAKORI/Chatbot-USMS.git), evolving an academic RAG assistant into an experimental security firewall for AI applications. It will detect hostile inputs, enforce data and tool permissions, validate outputs, and measure protection against repeatable attacks on its own test system.
+RagSec is an upgrade and enhancement of [Chatbot-USMS](https://github.com/ALLAKORI/Chatbot-USMS.git), evolving an academic RAG assistant into an experimental security firewall for AI applications. The protected lab detects hostile inputs, enforces data and tool permissions, validates outputs, and measures deterministic controls against repeatable owned-lab attacks.
 
 ## Current status
 
-This repository contains the inherited working application, a security architecture, a threat model, and development scaffolding. The firewall, LangGraph agent, OPA integration and attack benchmark are **planned, not implemented**. The initial Rego files deny all requests and are not wired into the application. Running the application currently runs the Chatbot-USMS baseline, including its academic branding and fixtures.
+This repository contains the inherited comparison application and a separate protected FastAPI gateway. The protected gateway, OPA policies, bounded LangGraph path, ingestion lifecycle, isolated parser, scoped Qdrant retrieval, citations, cache/deletion controls, mock tool and memory boundaries, protected Compose profile, tests and deterministic benchmark are implemented. Launching the original application still runs the baseline; use `compose.protected.yml` and `/secure` for the protected lab. See [implementation evidence](docs/implementation-report.md) and the [OWASP assessment](docs/owasp-assessment.md).
 
 The baseline was cloned from the local Chatbot-USMS checkout at commit `a652260ec8e09507b3a23f5bf1673f95500736b8` because GitHub cloning required unavailable authentication. A fresh Git history is used for RagSec. See [provenance](docs/provenance.md).
 
@@ -33,13 +33,13 @@ Security decisions must combine deterministic limits, authorization and policy e
 
 | Technology | Role | Status |
 |---|---|---|
-| Python / FastAPI | Baseline API; future security gateway | Inherited / planned |
-| LangGraph | Bounded agent and tool orchestration | Planned |
-| Qdrant | Existing vector retrieval; future metadata filtering | Inherited / enhancement planned |
+| Python / FastAPI | Baseline API and protected gateway | Implemented |
+| LangGraph | Bounded agent and tool orchestration | Implemented in protected lab |
+| Qdrant | Scoped vector retrieval and versioned index | Implemented in protected lab |
 | pgvector | Alternative to Qdrant, not a second required store | Evaluation option |
-| PostgreSQL / SQLAlchemy / Alembic | Application records; future policy audit and provenance | Inherited / enhancement planned |
-| Redis | Cache; future scoped decisions and rate budgets | Inherited / enhancement planned |
-| OPA / Rego | Tool, data-access and memory authorization | Policy stubs only |
+| PostgreSQL / SQLAlchemy / Alembic | Application and protected provenance/audit records | Implemented |
+| Redis | Optional protected scoped cache | Implemented |
+| OPA / Rego | Tool, data-access and memory authorization | Implemented and tested in protected lab |
 | Docker Compose | Baseline local services | Inherited |
 | Next.js / Groq | Existing demo UI and model provider | Inherited |
 
@@ -86,9 +86,9 @@ The existing `docker-compose.yml` can run the baseline using `docker compose up 
 
 ## Attack and defense work
 
-The planned corpus covers direct and indirect prompt injection, poisoned RAG documents, tool abuse, sensitive-data extraction, malicious memory injection, unauthorized tool calls, context flooding, and encoded or obfuscated prompts. Use synthetic secrets, mock tools and documents owned by the project.
+The owned-lab corpus covers direct and indirect prompt injection, poisoned RAG documents, tool abuse, sensitive-data extraction, malicious memory injection, unauthorized tool calls, context flooding, and encoded or obfuscated prompts. Use synthetic secrets, mock tools and documents owned by the project.
 
-Evaluate the same cases with protection disabled and enabled. Report attack success rate, false positive rate, added latency and benign task success, including per-category results and uncertainty. **No benchmark results have been measured.** The suggested 78% → 8% attack success, 4% false positives, 93 ms added latency and 96% benign success are illustrative figures, not claims or acceptance thresholds. See [benchmark protocol](benchmark/README.md).
+Evaluate the same cases with protection disabled and enabled. The checked-in deterministic offline run reports 0/21 protected attack objectives, 9/9 benign objectives and no false positives per cold/warm arm; these are synthetic control results, not live-model or production claims. See the [benchmark protocol](benchmark/README.md) and [recorded summary](benchmark/results/offline-v1/summary.json).
 
 ## Documentation and development
 
@@ -98,7 +98,7 @@ Start with [architecture](ARCHITECTURE.md), [threat model](THREAT_MODEL.md), [ro
 python -m pytest backend/tests/ -q
 ```
 
-This tests inherited behavior; firewall coverage will be added under `tests/`. There is no executable attack benchmark yet.
+This tests inherited behavior; protected coverage is under `tests/`. Run `python -m benchmark.runner` for the versioned offline benchmark. Offline results are control evidence, not live-model protection rates.
 
 Primary security reference: [OWASP RAG Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/RAG_Security_Cheat_Sheet.html), consulted 2026-09-09. It informs the threat and control backlog; referencing it does not establish OWASP certification or compliance.
 
