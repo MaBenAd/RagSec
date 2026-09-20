@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import type { Message } from "@/types";
 import { useChatStore } from "@/store/useChatStore";
 import { useTranslation } from "react-i18next";
+import { verifySecurityCitation } from "@/lib/security-api";
 import { TimetableGrid } from "./TimetableGrid";
 import { User, Bot, Sparkles, ThumbsUp, ThumbsDown, ChevronDown, ChevronUp, ShieldCheck, AlertCircle, ShieldAlert } from "lucide-react";
 
@@ -13,6 +14,7 @@ export function MessageBubble({ message }: { message: Message }) {
   const isUser = message.role === "user";
   const { giveFeedback } = useChatStore();
   const [showTimetable, setShowTimetable] = useState(Boolean(message.metadata?.timetable));
+  const [citationStatus, setCitationStatus] = useState("");
 
   const confidence = message.metadata?.rag_confidence;
   const score = message.metadata?.rag_score;
@@ -87,6 +89,10 @@ export function MessageBubble({ message }: { message: Message }) {
           <div className={`prose prose-sm ${isUser ? "prose-invert" : "dark:prose-invert"} max-w-none prose-p:leading-relaxed prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-pre:rounded-lg`}>
             <ReactMarkdown
               components={{
+                img: ({ alt }) => <span>[{alt || "image"}]</span>,
+                a: ({ href, children }) => href && /^https?:\/\//i.test(href)
+                  ? <a href={href} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">{children}</a>
+                  : <span>{children}</span>,
                 h1: ({ children }) => <h1 className="mb-2 text-base font-black uppercase tracking-wider text-ensa-navy dark:text-blue-100">{children}</h1>,
                 h2: ({ children }) => <h2 className="mb-2 text-[15px] font-black text-ensa-navy dark:text-blue-100">{children}</h2>,
                 h3: ({ children }) => <h3 className="mb-1.5 text-[14px] font-bold text-ensa-blue dark:text-blue-300">{children}</h3>,
@@ -103,6 +109,15 @@ export function MessageBubble({ message }: { message: Message }) {
             >
               {message.content}
             </ReactMarkdown>
+            {message.metadata?.security && <div className="mt-3 border-t pt-2 text-sm" aria-live="polite">
+              <span>{t(`security.${message.metadata.security.status}`)}</span>
+              {message.metadata.security.citations.map((citation, index) => <button
+                key={citation.chunk_id} className="ml-2 underline" onClick={async () => {
+                  try { await verifySecurityCitation(citation.token); setCitationStatus(t("security.verified")); }
+                  catch { setCitationStatus(t("security.source_unavailable")); }
+                }}>{t("security.source")} {index + 1}</button>)}
+              <span className="block">{citationStatus}</span>
+            </div>}
           </div>
           {/* Tail */}
           <div className={`
@@ -113,7 +128,7 @@ export function MessageBubble({ message }: { message: Message }) {
         </div>
       </div>
 
-      {!isUser && (
+      {!isUser && !message.metadata?.security && (
         <div className={`flex gap-1.5 ml-11 mt-0.5 transition-opacity duration-200 ${message.feedback !== 0 ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}>
           <button 
             onClick={() => handleFeedback(1)}

@@ -1,4 +1,13 @@
 {
+  "security": {
+    "demo": "Protected lab", "scope": "Answers use approved sources. This local lab uses synthetic data and an offline provider by default.",
+    "allowed": "Validated", "blocked": "Blocked", "unavailable": "Required service unavailable", "no_evidence": "No authorized evidence", "limited": "Request limit reached",
+    "source": "Source", "verified": "Source verified", "source_unavailable": "Source unavailable or access revoked", "document": "Document text",
+    "admin_login": "Sign in with an administrator account on the protected chat page.", "operation_failed": "Operation denied or service unavailable.",
+    "review_hint": "Register a source, stage a document, review its scan, then publish. Approval preserves the document's access restrictions.",
+    "register_source": "Register source", "stage": "Stage document", "publish": "Publish approved documents", "flagged": "Inspection found suspicious instructions or invisible text. Review required.",
+    "staged": "Staged", "scanned": "Scanned", "quarantined": "Quarantined", "approved": "Approved", "indexed": "Published", "revoked": "Revoked; cleanup queued", "deleted": "Deleted"
+  },
   "common": {
     "login": "Login",
     "register": "Register",

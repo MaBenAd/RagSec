@@ -1,4 +1,13 @@
 {
+  "security": {
+    "demo": "Laboratoire protégé", "scope": "Les réponses utilisent des sources approuvées. Ce laboratoire local utilise des données synthétiques et un fournisseur hors ligne par défaut.",
+    "allowed": "Validé", "blocked": "Bloqué", "unavailable": "Service requis indisponible", "no_evidence": "Aucune source autorisée", "limited": "Limite de requêtes atteinte",
+    "source": "Source", "verified": "Source vérifiée", "source_unavailable": "Source indisponible ou accès révoqué", "document": "Texte du document",
+    "admin_login": "Connectez-vous avec un compte administrateur sur la page de discussion protégée.", "operation_failed": "Opération refusée ou service indisponible.",
+    "review_hint": "Enregistrez une source, déposez un document, vérifiez son analyse, puis publiez. L'approbation conserve les restrictions d'accès.",
+    "register_source": "Enregistrer la source", "stage": "Déposer le document", "publish": "Publier les documents approuvés", "flagged": "Instructions suspectes ou texte invisible détectés. Vérification requise.",
+    "staged": "Déposé", "scanned": "Analysé", "quarantined": "En quarantaine", "approved": "Approuvé", "indexed": "Publié", "revoked": "Révoqué ; suppression en attente", "deleted": "Supprimé"
+  },
   "common": {
     "login": "Connexion",
     "register": "S'inscrire",

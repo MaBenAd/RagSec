@@ -46,11 +46,30 @@ export interface ChatResponse {
 }
 
 export interface MessageMetadata {
+  security?: SecurityOutcome;
   source_files?: string | string[] | null;
   timetable?: Timetable | null;
   type?: string;
   rag_confidence?: string;
   rag_score?: number;
+}
+
+export interface SecurityCitation {
+  document_id: string;
+  chunk_id: string;
+  version: number;
+  document_hash: string;
+  chunk_hash: string;
+  token: string;
+}
+
+export interface SecurityOutcome {
+  request_id: string;
+  status: "allowed" | "blocked" | "unavailable" | "no_evidence" | "limited";
+  answer: string;
+  reason: string;
+  citations: SecurityCitation[];
+  conversation_id: number | null;
 }
 
 export interface StatsResponse {
