@@ -6,10 +6,10 @@ RagSec upgrades [Chatbot-USMS](https://github.com/ALLAKORI/Chatbot-USMS.git) int
 
 - [Project README](../README.md): purpose, current status, stack and baseline startup.
 - [Architecture](../ARCHITECTURE.md): target components, interfaces and trust enforcement.
-- [Threat model](../THREAT_MODEL.md): inherited boundaries, assumptions and planned defenses.
+- [Threat model](../THREAT_MODEL.md): inherited boundaries, protected controls, assumptions and remaining defenses.
 - [Roadmap](roadmap.md): implementation milestones and completion criteria.
 - [Project implementation checklist](project-todo.md): ordered tasks, repository integration points, dependencies and acceptance evidence from setup through maintenance.
-- [Testing](testing.md): baseline regression and planned firewall validation.
+- [Testing](testing.md): baseline regression, protected firewall validation and environment-dependent checks.
 - [Benchmark protocol](../benchmark/README.md): attack categories, metrics and reproducibility.
 - [OWASP mapping](owasp-rag-security.md): primary security reference and backlog mapping.
 - [Provenance](provenance.md): source revision and attribution.
