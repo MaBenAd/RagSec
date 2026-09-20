@@ -27,7 +27,24 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
         run: |
-          PYTHONPATH=. pytest
+          PYTHONPATH=. pytest backend/tests/ -q
+
+      - name: Start OPA policy service
+        run: |
+          docker run -d --name ragsec-ci-opa -p 127.0.0.1:18181:8181 \
+            -v "$PWD/policies:/policies:ro" openpolicyagent/opa:1.4.2-static \
+            run --server --addr=0.0.0.0:8181 /policies
+          sleep 2
+
+      - name: Run protected firewall tests
+        env:
+          RAGSEC_TEST_OPA_URL: http://127.0.0.1:18181
+        run: PYTHONPATH=. pytest tests/ -q
+
+      - name: Check Rego
+        run: |
+          docker run --rm -v "$PWD/policies:/policies:ro" openpolicyagent/opa:1.4.2-static check --strict /policies
+          docker run --rm -v "$PWD/policies:/policies:ro" openpolicyagent/opa:1.4.2-static test /policies -v
 
   frontend-build:
     runs-on: ubuntu-latest
